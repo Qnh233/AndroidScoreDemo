@@ -11,7 +11,6 @@ public class Score {
     private Long student_id;
     private int grade;
     public Score(){
-
     }
     public Score(int course,Long student,int grade){
         course_id = course;

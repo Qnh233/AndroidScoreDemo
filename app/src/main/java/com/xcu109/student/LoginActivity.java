@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         log = findViewById(R.id.login);
         sign = findViewById(R.id.signin);
-        final UserDao user = new UserDao(this);
+        UserDao userdao = new UserDao(this);
         log.setOnClickListener(new View.OnClickListener() {         //点击登录，跳转到MainActivity,传入对应id
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 //                    showNormalDialog(EditCheck.getWarning());
                     Toast.makeText(getApplicationContext(),EditCheck.getWarning(),Toast.LENGTH_SHORT).show();
                 }
-                else if(user.check(Long.parseLong(id_str),passwd)){              //账号匹配成功,进入MainActivity
+                else if(userdao.check(Long.parseLong(id_str),passwd)){              //账号匹配成功,进入MainActivity
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     Toast.makeText(getApplicationContext(),id_str+",欢迎登录。",Toast.LENGTH_SHORT).show();
                     intent.putExtra("id",Long.parseLong(id_str));

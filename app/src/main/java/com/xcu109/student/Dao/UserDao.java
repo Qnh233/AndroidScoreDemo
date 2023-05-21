@@ -34,6 +34,7 @@ public class UserDao {
 
     public boolean check(Long id, String password) {
         try {
+
             CallbackFuture future =new CallbackFuture();
         OkHttpClient client = new OkHttpClient();
         User user = new User(id, password);
@@ -42,7 +43,7 @@ public class UserDao {
                 MediaType.parse("application/json"), toJson);
         Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").post(body).build();
         client.newCall(request).enqueue(future);
-        Response response = future.get();;
+        Response response = future.get();
         String string = response.body().string();
         if(string.equals("true"))
             {
@@ -66,7 +67,7 @@ public class UserDao {
                     MediaType.parse("application/json"), toJson);
             Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").put(body).build();
             client.newCall(request).enqueue(future);
-            Response response = response = future.get();;
+            Response response = future.get();;
             String string = response.body().string();
             if(string.equals("true"))
             {
@@ -82,15 +83,21 @@ public class UserDao {
      */
     public boolean modifyPasswd(User user,String newPasswd){
         try {
+
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
+            boolean check = this.check(user.getId(), user.getPassword());
+            if (!check)
+            {
+                return false;
+            }
             user.setPassword(newPasswd);
             String toJson = gson.toJson(user);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
             Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").put(body).build();
             client.newCall(request).enqueue(future);
-            Response response = response = future.get();;
+            Response response  = future.get();;
             String string = response.body().string();
             if(string.equals("true"))
             {

@@ -5,17 +5,18 @@ package com.xcu109.student.Entity;
  */
 
 public class User {
-    private long student_id;
+    private Long id;
     private String password;
     public User(){
 
     }
     public User(Long student_id, String password){
-        this.student_id = student_id;
+        this.id = student_id;
         this.password = password;
     }
-    public long getId(){return  student_id;}
-    public void setStudent_id(int id){student_id=id;}
+    public long getId(){return id;}
+    public void setId(Long id){
+        this.id =id;}
     public String getPassword(){return password;}
     public void setPassword(String password){this.password=password;}
 }
