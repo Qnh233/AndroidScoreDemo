@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.clutch.student.StudentChangeActivity">
+    tools:context="com.xcu109.student.StudentChangeActivity">
 
     <EditText
         android:id="@+id/editText"
@@ -60,7 +60,9 @@
         app:layout_constraintEnd_toStartOf="@+id/cancel_s"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="56dp" />
 
     <Button
         android:id="@+id/cancel_s"
@@ -70,7 +72,8 @@
         android:layout_marginTop="288dp"
         android:text="重输"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="64dp" />
 
     <TextView
         android:id="@+id/textView4"

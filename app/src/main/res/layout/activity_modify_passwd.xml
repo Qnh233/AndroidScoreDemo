@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.clutch.student.ModifyPasswdActivity">
+    tools:context="com.xcu109.student.ModifyPasswdActivity">
 
     <EditText
         android:id="@+id/account_m"
