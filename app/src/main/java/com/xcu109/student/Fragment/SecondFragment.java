@@ -6,7 +6,9 @@ package com.xcu109.student.Fragment;
  */
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +29,7 @@ import java.util.List;
 
 
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class SecondFragment extends Fragment {
     static Context context = MyApplication.getInstance();
     private static ScoreDao  uncourse = new ScoreDao(context);   //未选的课程
@@ -37,7 +40,6 @@ public class SecondFragment extends Fragment {
     public SecondFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

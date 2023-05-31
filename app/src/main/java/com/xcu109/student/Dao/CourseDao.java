@@ -11,8 +11,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xcu109.student.Entity.Course;
-import com.xcu109.student.util.CallbackFuture;
-import com.xcu109.student.util.HttpUtil;
+import com.xcu109.student.untility.CallbackFuture;
+import com.xcu109.student.untility.HttpUtility;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class CourseDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Course/exist").get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Course/exist").get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -117,7 +117,7 @@ public class CourseDao {
         System.out.println("!!!!!!!!");
         CallbackFuture future =new CallbackFuture();
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(HttpUtil.getUrl()+"/Course/list").get().build();
+        Request request = new Request.Builder().url(HttpUtility.getUrl()+"/Course/list").get().build();
         client.newCall(request).enqueue(future);
         try {
             Response response = future.get();
@@ -151,7 +151,7 @@ public class CourseDao {
                     MediaType.parse("application/json"), toJson);
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl()+"/Course").put(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl()+"/Course").put(body).build();
             client.newCall(request).enqueue(future);
             String string = future.get().body().string();
             System.out.println(string);
@@ -176,7 +176,7 @@ public class CourseDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl()+"/Course?courseId="+courseId).delete().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl()+"/Course?courseId="+courseId).delete().build();
             client.newCall(request).enqueue(future);
             String string = future.get().body().string();
             if(string.equals("true"))

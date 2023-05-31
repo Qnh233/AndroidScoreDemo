@@ -1,4 +1,4 @@
-package com.xcu109.student.util;
+package com.xcu109.student.untility;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -12,8 +12,7 @@ import okhttp3.Response;
 
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public
-class CallbackFuture extends CompletableFuture<Response> implements Callback {
+public class CallbackFuture extends CompletableFuture<Response> implements Callback {
     public void onResponse(Call call, Response response) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             super.complete(response);

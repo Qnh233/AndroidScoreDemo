@@ -6,8 +6,8 @@ import android.support.annotation.RequiresApi;
 
 import com.google.gson.Gson;
 import com.xcu109.student.Entity.User;
-import com.xcu109.student.util.CallbackFuture;
-import com.xcu109.student.util.HttpUtil;
+import com.xcu109.student.untility.CallbackFuture;
+import com.xcu109.student.untility.HttpUtility;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -41,7 +41,7 @@ public class UserDao {
         String toJson = gson.toJson(user);
         RequestBody body = RequestBody.create(
                 MediaType.parse("application/json"), toJson);
-        Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").post(body).build();
+        Request request = new Request.Builder().url(HttpUtility.getUrl() +"/User").post(body).build();
         client.newCall(request).enqueue(future);
         Response response = future.get();
         String string = response.body().string();
@@ -65,7 +65,7 @@ public class UserDao {
             String toJson = gson.toJson(user);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").put(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/User").put(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();;
             String string = response.body().string();
@@ -95,7 +95,7 @@ public class UserDao {
             String toJson = gson.toJson(user);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/User").put(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/User").put(body).build();
             client.newCall(request).enqueue(future);
             Response response  = future.get();;
             String string = response.body().string();

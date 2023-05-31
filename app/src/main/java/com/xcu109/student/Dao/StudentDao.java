@@ -13,8 +13,8 @@ import com.google.gson.reflect.TypeToken;
 import com.xcu109.student.Entity.Student;
 import com.xcu109.student.Entity.Student_info;
 import com.xcu109.student.R;
-import com.xcu109.student.util.CallbackFuture;
-import com.xcu109.student.util.HttpUtil;
+import com.xcu109.student.untility.CallbackFuture;
+import com.xcu109.student.untility.HttpUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class StudentDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Student/exist").get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Student/exist").get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -75,7 +75,7 @@ public class StudentDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Student/"+id).get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Student/"+id).get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -111,7 +111,7 @@ public class StudentDao {
             String toJson = gson.toJson(student);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Student").post(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Student").post(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -135,7 +135,7 @@ public class StudentDao {
             String toJson = gson.toJson(student);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Student").put(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Student").put(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();

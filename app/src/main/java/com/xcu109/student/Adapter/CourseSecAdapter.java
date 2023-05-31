@@ -13,20 +13,20 @@ import android.widget.Toast;
 
 import com.xcu109.student.Dao.ScoreDao;
 import com.xcu109.student.Entity.CourseSec;
-
-import java.lang.reflect.Field;
-import java.util.List;
-
 import com.xcu109.student.Fragment.FirstFragment;
 import com.xcu109.student.Fragment.SecondFragment;
 import com.xcu109.student.MainActivity;
 import com.xcu109.student.MyApplication;
 import com.xcu109.student.R;
 
+import java.lang.reflect.Field;
+import java.util.List;
+
 /**
  *课程类适配器，将课程信息展示在CourseSecFragment上
  * 管理员查看所有课程信息
  */
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class CourseSecAdapter extends RecyclerView.Adapter<CourseSecAdapter.ViewHolder>{
 
     private List<CourseSec> mCourseSecList;

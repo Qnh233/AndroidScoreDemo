@@ -3,7 +3,6 @@ package com.xcu109.student.Entity;
 /**
  * 展示学生选课及对应课程分数的类
  */
-
 public class CourseSec {
     private int course_id;
     private  String course_name;

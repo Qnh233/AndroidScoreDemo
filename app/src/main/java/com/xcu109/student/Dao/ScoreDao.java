@@ -13,8 +13,8 @@ import com.google.gson.reflect.TypeToken;
 import com.xcu109.student.Entity.Course;
 import com.xcu109.student.Entity.CourseSec;
 import com.xcu109.student.Entity.Score;
-import com.xcu109.student.util.CallbackFuture;
-import com.xcu109.student.util.HttpUtil;
+import com.xcu109.student.untility.CallbackFuture;
+import com.xcu109.student.untility.HttpUtility;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class ScoreDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/exist").get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/exist").get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -71,7 +71,7 @@ public class ScoreDao {
             String toJson = gson.toJson(score);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score").put(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score").put(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -99,7 +99,7 @@ public class ScoreDao {
         try{
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/"+student_id).get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/"+student_id).get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -120,7 +120,7 @@ public class ScoreDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/selected/"+id).get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/selected/"+id).get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -141,7 +141,7 @@ public class ScoreDao {
         try {
             CallbackFuture future =new CallbackFuture();
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/unselected/"+id).get().build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/unselected/"+id).get().build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -166,7 +166,7 @@ public class ScoreDao {
             String toJson = gson.toJson(score);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/addupdate/"+student_id+'/'+course_id).post(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/addupdate/"+student_id+'/'+course_id).post(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
@@ -196,7 +196,7 @@ public class ScoreDao {
             String toJson = gson.toJson(score);
             RequestBody body = RequestBody.create(
                     MediaType.parse("application/json"), toJson);
-            Request request = new Request.Builder().url(HttpUtil.getUrl() +"/Score/rmupdate/"+student_id+'/'+course_id).post(body).build();
+            Request request = new Request.Builder().url(HttpUtility.getUrl() +"/Score/rmupdate/"+student_id+'/'+course_id).post(body).build();
             client.newCall(request).enqueue(future);
             Response response = future.get();
             String string = response.body().string();
