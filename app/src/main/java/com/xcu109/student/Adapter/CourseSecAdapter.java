@@ -1,6 +1,8 @@
 package com.xcu109.student.Adapter;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -62,15 +64,34 @@ public class CourseSecAdapter extends RecyclerView.Adapter<CourseSecAdapter.View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         holder.CourseSecView.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 int position = holder.getAdapterPosition();
                 CourseSec CourseSec = mCourseSecList.get(position);
-                scoreDao.rmCourse(MainActivity.getStudentId(),CourseSec.getCourse_id());
-                Toast.makeText(v.getContext(), "退课成功！ " , Toast.LENGTH_SHORT).show();
-                SecondFragment.updata();
-                FirstFragment.update();
+                builder.setMessage("确定要删除"+ CourseSec.getCourse_name()+"吗？");
+                builder.setTitle("提示");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        // 执行操作
+//                        Toast.makeText(MyApplication.getInstance(), "你点击确定了", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "退课成功！ " , Toast.LENGTH_SHORT).show();
+                        scoreDao.rmCourse(MainActivity.getStudentId(),CourseSec.getCourse_id());
+                        SecondFragment.updata();
+                        FirstFragment.update();
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+
             }
         });
         holder.CourseSecImage.setOnClickListener(new View.OnClickListener() {
