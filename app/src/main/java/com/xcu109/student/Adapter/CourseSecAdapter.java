@@ -69,8 +69,8 @@ public class CourseSecAdapter extends RecyclerView.Adapter<CourseSecAdapter.View
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 int position = holder.getAdapterPosition();
                 CourseSec CourseSec = mCourseSecList.get(position);
-                builder.setMessage("确定要删除"+ CourseSec.getCourse_name()+"吗？");
-                builder.setTitle("提示");
+                builder.setMessage("确定要退选《"+ CourseSec.getCourse_name()+"》吗？");
+                builder.setTitle("温馨提示");
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
